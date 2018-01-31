@@ -1,9 +1,27 @@
-{% extends 'masterpage.html' %}
+{% extends 'masterpage.html' %} {% block content %}
+<h1></h1>
+<main>
+  <br>
+  <div class='container z-depth-1 roundIt youq'>
+    <h2 class='text-lighten-1'>Your Take:</h2>
+    <h4 id='alas' class='red-text text-lighten-2'>{{chunkA}}{{blankA}}{{chunkB}}{{blankB}}{{chunkC}}{{blankC}}{{chunkD}}</h4></div><br>
+  <div class='container z-depth-1 youq roundIt' </div>
+    <h2> Original Quote:</h2>
+    <h4 id='originalQ' class='lime-text text-darken-2'>{{originalQ}}<h4>
 
-  {% block content %}
-  <h1></h1>
-  <main>
-    <br><div class='container z-depth-1 roundIt youq'><h2 class='text-lighten-1'>Your Take:</h2><h4 id='alas' class= 'red-text text-lighten-2'>{{chunkA}}{{blankA}}{{chunkB}}{{blankB}}{{chunkC}}{{blankC}}{{chunkD}}</h4></div><br><div class='container z-depth-1 youq roundIt'</div><h2> Original Quote:</h2><h4 id='originalQ' class='lime-text text-darken-2'>{{originalQ}}<h4></div>
+  </div>
+  <form action='/libs/' method='post'>
+    {% csrf_token %}
+    <button type="submit">Save Your Creation</button>
+    <input type='hidden' value='{{blankA}}' name='blankA' id='blankA' >
+    <input type='hidden' value='{{blankB}}' name='blankB' id='blankB' >
+    <input type='hidden' value='{{blankC}}' name='blankC' id='blankC' >
+    <input type='hidden' value='{{chunkA}}' name='chunkA' id='chunkA' >
+    <input type='hidden' value='{{chunkB}}' name='chunkB' id='chunkB' >
+    <input type='hidden' value='{{chunkC}}' name='chunkC' id='chunkC' >
+    <input type='hidden' value='{{chunkD}}' name='chunkD' id='chunkD' >
+    <input type='hidden' value='{{originalQ}}' name='originalQ' id='originalQ' >
+  </form>
   </main>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 

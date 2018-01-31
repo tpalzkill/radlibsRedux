@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from cjangoApp.views import index, assemble, libbed
+from cjangoApp.views import index, assemble, libbed, libs
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='index'),
     url(r'^assemble/', assemble, name='assemble'),
     url(r'^libbed/', libbed, name='libbed'),
+    url(r'^libs/', libs, name='libs'),
 ]

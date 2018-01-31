@@ -1,0 +1,34 @@
+{% extends 'masterpage.html' %}
+
+  {% block content %}
+  <main>
+    <div class="section center">
+      <div id ="yomomma" class="container center">
+        <div class="row">
+          <form id='theOGform' action='/assemble/' method="post" class="col-s12 padder">
+            {% csrf_token %}
+            <div class="row">
+              <div class="input-field">
+                <select name='selected' id='sourceSelector'>
+            <option class="black-text" value="default" disabled selected>Choose your text source</option>
+            <option value="Random">Random</option>
+            <option value="Inspirational Quote" >Inspirational Quote</option>
+            <option value="Dad Joke">Dad Joke</option>
+            <option value="Ron Swanson Quote">Ron Swanson Quote</option>
+            <option value="Trump Quote">Trump Quote</option>
+          </select>
+          <br>
+              <input type="submit" id="btnGet" class="btn-large waves-effect font pretty" value="Get RadLib"/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+  {% endblock %}

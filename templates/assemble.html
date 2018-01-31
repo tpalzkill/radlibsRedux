@@ -1,0 +1,41 @@
+{% extends 'masterpage.html' %} {% block content %}
+<main>
+
+  <div class='section v-align-center z-depth-4 roundIt'>
+    <div class='container'>
+      <div class='row'>
+        <form id='newForm' action="/libbed/" method='post' class='getLibbed'>
+          {% csrf_token %}
+          <h3 class='lime-text text-darken-2 fun-text inline hide change' id='segmentA'></h3>
+          <div class='input-field inline'>
+            <input name='blankA' id='blankA' type='textfield' class='responseField inline'>
+          </div>
+
+            <input type='hidden' name='chunkA' id='chunkA' >
+            <input type='hidden' name='chunkB' id='chunkB' >
+            <input type='hidden' name='chunkC' id='chunkC' >
+            <input type='hidden' name='chunkD' id='chunkD' >
+            <input type='hidden' name='originalQ' id='originalQ' >
+
+          <h3 id='segmentB' class='change lime-text text-darken-2 fun-text inline hide'></h3>
+          <div class='input-field inline'><input name='blankB' id='blankB' type='textfield' class='responseField inline'></div>
+          <h3 class='lime-text text-darken-2 fun-text inline hide change' id='segmentC'></h3>
+          <div class='input-field inline'><input name='blankC' id='blankC' type='textfield' class='responseField inline'></div>
+          <h3 class='change lime-text text-darken-2 fun-text inline hide' id='segmentD'></h3><br><br>
+          <div><input name='checker' type='checkbox' id='revealText'><label for='revealText'>Reveal Surrounding Text</label></div><input type='submit' id='finishHim' class='btn-large waves-effect submit-gradient' value='submit'></form>
+      </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+  $('#revealText').change(function() {
+    $('.change').toggleClass('hide');
+  })
+</script>
+<script>
+  $(document).ready(function() {
+    submitFunc("{{selected}}");
+  });
+</script>
+{% endblock %}

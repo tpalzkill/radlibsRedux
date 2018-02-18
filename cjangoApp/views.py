@@ -47,6 +47,7 @@ def libs(request):
     fudge = chunkA+blankA+chunkB+blankB+chunkC+blankC+chunkD
     b = saved_libs(full_text=fudge, original_text=originalQ, upvotes=0)
     b.save()
+
     return render(request, 'libs.html', { 'blankA':blankA,
                                             'blankB':blankB,
                                             'blankC':blankC,

@@ -12,6 +12,7 @@ let makeTheCall = function(whorl, isolateString) {
 }
 // analyzeSyntax takes in a string and splits out all the punctutation, sends the sentence to nlApi and its is called when the select from landing page is submitted
 let analyzeSyntax = function(string) {
+  console.log(string);
   let quote = string.split('.').join(' ').split('?').join(' ').split('!').join(' ').split('  ').join(' ');
   let wordType = [];
   let toSendToGoog = {

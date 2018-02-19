@@ -12,21 +12,13 @@ let makeTheCall = function(whorl, isolateString) {
 }
 // analyzeSyntax takes in a string and splits out all the punctutation, sends the sentence to nlApi and its is called when the select from landing page is submitted
 let analyzeSyntax = function(string) {
-  // let quote = string.split('.').join(' ').split('?').join(' ').split('!').join(' ').split('  ').join(' ');
-  let quote = string.split(' ');
+  let quote = string.split('.').join(' ').split('?').join(' ').split('!').join(' ').split('  ').join(' ');
   console.log(quote);
-  let wordObj = {};
-  quote.forEach(function(element) {
-    wordObj[element] = element;
-  });
-  console.log(wordObj);
-  let rejoice = quote.join(' ');
-  // console.log(rejoice);
   let wordType = [];
   let toSendToGoog = {
     "document": {
       "type": "PLAIN_TEXT",
-      "content": rejoice,
+      "content": quote,
     },
     "encodingType": "UTF8"
   }
@@ -40,7 +32,6 @@ let analyzeSyntax = function(string) {
       if (data) {
         let JSONparsed = JSON.parse(data);
         let GoogleObjects = (Object.values(JSONparsed));
-        console.log(GoogleObjects);
         let allWordTypes = GoogleObjects[1];
         allWordTypes.forEach(function(element) {
           wordType.push(element.partOfSpeech.tag);
@@ -78,7 +69,8 @@ let analyzeChopped = function(array) {
         let typePush = objectified[1];
         typePush.forEach(function(element) {
           wordTypes.push(element.partOfSpeech.tag);
-        });
+        })
+
         let notPunct = wordTypes.filter(function(word) {
           if (word !== "PUNCT") {
             return word;
@@ -98,7 +90,6 @@ let analyzeChopped = function(array) {
 let wordRemover = function(string, array) {
   let sampleSplit = string.split(' ');
   chopped = [];
-  console.log(chopped);
   numbersChosen = [];
   let flag = 0;
   for (let i = 0; chopped.length < 3; i++) {
@@ -110,7 +101,7 @@ let wordRemover = function(string, array) {
       break;
     }
     let randoNumber = Math.floor(Math.random() * sampleSplit.length);
-    if ((array[randoNumber] === "NOUN" || array[randoNumber] === "ADJ" || array[randoNumber] === "VERB") && ((sampleSplit[randoNumber]).length) > 3 && array[randoNumber] != "PUNCT")  {
+    if ((array[randoNumber] === "NOUN" || array[randoNumber] === "ADJ" || array[randoNumber] === "VERB") && ((sampleSplit[randoNumber]).length) > 3) {
       if (sampleSplit[randoNumber] != "SPLITHERE") {
         chopped.push(sampleSplit.splice(randoNumber, 1, 'SPLITHERE'));
         numbersChosen.push(randoNumber);
